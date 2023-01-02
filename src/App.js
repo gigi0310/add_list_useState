@@ -2,6 +2,7 @@
 import { useReducer, useState } from 'react';
 import './App.css';
 import Modal from './Modal';
+import reducer from './useReducer';
 
 const data = [
   {id:1, name:'John'},
@@ -10,38 +11,7 @@ const data = [
   {id:4, name:'Gigi'},
   ]
 
-const reducer = (state, action) => {
-  
-  
-  if (action.type === 'ADD_ITEM') {
 
-    let newPeople = [...state.people, action.payload];
-
-    
-    return {
-      ...state,
-      people: newPeople,
-      isModalOpen: true,
-      modalContent: 'Item Added',
-
-    }
-  }
-
-  if (action.type === 'NO_VALUE') {
-    return {...state, isModalOpen: true, modalContent: 'please enter value'}
-  }
-
-  if (action.type === 'CLOSE_MODAL'){
-    return {...state, isModalOpen:false}
-  }
-  // return state; // initial state
-
-  if (action.type === 'REMOVE_ITEM'){
-    const newPeople = state.people.filter((person)=>person.id !== action.payload);
-    return {...state, people: newPeople}
-  }
-  throw new Error ('no matching action type');
-};
 
 const defaultState = {
   people: [],
