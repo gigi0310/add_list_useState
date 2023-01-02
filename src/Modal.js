@@ -1,7 +1,18 @@
+import { useEffect } from "react";
 
-const Modal = () =>{
+const Modal = ({modalContent, closeModal}) =>{
+
+    // close modal in 3 seconds
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            closeModal();
+        }, 3000)
+    })
     return (
-        <div>It is added</div>
+        <div style={{backgroundColor:'white', width:"400px", height:'40px', display:'flex', justifyContent:"center", alignItems:'center'}}>
+            <p style={{color:'red'}}>{modalContent}</p>
+        </div>
     )
 }
 
