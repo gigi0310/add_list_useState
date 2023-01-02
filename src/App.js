@@ -1,15 +1,24 @@
 
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import './App.css';
 import Modal from './Modal';
 
-const data = ['John','Peter', 'Susan','Anna']
+const data = [
+  {id:1, name:'John'},
+  {id:2, name:'Anna'},
+  {id:3, name:'Betty'},
+  {id:4, name:'Gigi'},
+
+  ]
 
 function App() {
   
-  const [showModal, setShowModal] = useState(false);
+  
   const [name, setName] = useState('');
+  
   const [people, setPeople] = useState(data);
+
+  const [showModal, setShowModal] = useState(false);
 
   const hanldeSubmit = (e) =>{
     e.preventDefault();
@@ -28,7 +37,7 @@ function App() {
       {showModal && <Modal/>}
       
         <form onSubmit={hanldeSubmit}>
-          
+
           <input 
             type='text'
             value={name}
